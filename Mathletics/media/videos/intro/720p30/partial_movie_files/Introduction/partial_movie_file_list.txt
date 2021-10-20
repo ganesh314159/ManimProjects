@@ -1,4 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:/home/ganesh314159/manim_ce/Projects/Mathletics/media/videos/intro/720p30/partial_movie_files/Introduction/1342159004_2839631542_4101073582.mp4'
-file 'file:/home/ganesh314159/manim_ce/Projects/Mathletics/media/videos/intro/720p30/partial_movie_files/Introduction/1342159004_2208265271_1546487363.mp4'
-file 'file:/home/ganesh314159/manim_ce/Projects/Mathletics/media/videos/intro/720p30/partial_movie_files/Introduction/1353618911_120073445_3181916035.mp4'
