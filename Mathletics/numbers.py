@@ -1,8 +1,8 @@
 
-%%manim -qm -v WARNING Mathletics
-
+# %%manim -qm -v WARNING Mathletics
+from manim import *
 import numpy as np
-config.media_width="100%"
+# config.media_width="100%"
 
 class Mathletics(Scene):
     def construct(self):
