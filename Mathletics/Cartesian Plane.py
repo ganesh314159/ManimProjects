@@ -1,8 +1,8 @@
 
-%%manim -qm -v WARNING Example
-
+# %%manim -qm -v WARNING Example
+from manim import *
 import numpy as np
-config.media_width="100%"
+# config.media_width="100%"
 
 class Example(Scene):
     def construct(self):
