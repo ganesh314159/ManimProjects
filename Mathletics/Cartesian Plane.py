@@ -315,12 +315,19 @@ class Example(ThreeDScene, Scene):
             ).move_to(RIGHT*4).scale(0.5).rotate(PI/5, DOWN).rotate(PI/8, RIGHT)
             threedplane.get_x_axis_label(Tex("$x$"))
             threedplane.get_y_axis_label(Tex("$y$"))
-            z_label=threedplane.get_z_axis_label(Tex("$z$", color=BLACK))
+            # z_label=threedplane.get_z_axis_label(Tex("$z$", color=BLACK))
             text53=Text("3D Plane", color=BLACK, font="Fira Sans").scale(0.5).next_to(threedplane, DOWN, buff=0.2)
             
             # self.set_camera_orientation(phi=75 * DEGREES, theta=-45 * DEGREES)
-            self.play(Create(threedplane), Write(z_label), Write(text53), run_time=1.5)
+            self.play(Create(threedplane), Write(text53), run_time=1.5)
             self.wait(2)
+            group3=VGroup(complexplane, polarplane, threedplane)
+            group4=VGroup(text40, text41, text51, text52, text53)
+            self.play(
+                Uncreate(group3),
+                Unwrite(group4),
+                run_time=1
+            )
             # self.begin_ambient_camera_rotation(rate=0.1)
             # self.stop_ambient_camera_rotation()
             # self.move_camera(phi=75 * DEGREES, theta=30 * DEGREES)

@@ -1,0 +1,13 @@
+arduino uno - 600
+nano - 300
+micro - 470
+mini328 - 475
+humidity bme280 - 120
+gas sensor MQ135 - 160
+lcd 16x2 - 100
+hall effect sensor - 4
+li-ion battery 3.7 battery - 150
+21gwz 9 meter - 100
+
+
+

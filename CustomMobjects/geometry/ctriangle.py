@@ -2,7 +2,7 @@ from manim import *
 from numpy import *
 import numpy as np
 
-class Triangle(VMobject):
+class CTriangle(VMobject):
     def __init__(self, a=None, b=None, c=None, color=BLUE, **kwargs):
         super().__init__(color=color, **kwargs)
         if a is None:
