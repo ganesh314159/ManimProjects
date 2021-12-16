@@ -1,6 +1,6 @@
 from manim import *
 import numpy as np
-
+config.background_color="BLACK"
 # print(np.linspace(-3, 1, 1))
 class TestIntro(Scene):
     def construct(self):
@@ -66,3 +66,27 @@ class Test3D(ThreeDScene):
         self.play(Create(axes1))
         self.play(ReplacementTransform(axes1, axes2), run_time=5)
         self.wait(5)
+
+
+
+class TestAnimate(Scene):
+    def construct(self):
+        circle1 = Circle().move_to(LEFT)  # create a circle
+        square1 = Square().move_to(LEFT)
+        circle2 = Circle().move_to(RIGHT)
+        circle3 = Circle().move_to(RIGHT).set_fill(PINK, opacity=0.5)
+        square2 = Square().move_to(RIGHT)  # create a square
+        square3 = Square().move_to(RIGHT).rotate(PI/4)
+        self.play(Create(square1), Create(square2))  # show the shapes on screen
+        self.play(
+            square1.animate.rotate(PI / 4),
+            ReplacementTransform(square2, square3)
+        )  # rotate the square
+        self.play(
+            ReplacementTransform(square1, circle1),
+            ReplacementTransform(square3, circle2)
+        )  # transform the square into a circle
+        self.play(
+            circle1.animate.set_fill(PINK, opacity=0.5),
+            ReplacementTransform(circle2, circle3)
+        )  # color the circle on screen

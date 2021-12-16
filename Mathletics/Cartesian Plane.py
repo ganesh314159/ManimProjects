@@ -7,6 +7,7 @@ config.background_color = WHITE
 class Example(ThreeDScene, Scene):
     def construct(self):
         with register_font("assets/fonts/"):
+            # Intro starts
             trustlogo=ImageMobject("Pictures/Trust.png").move_to(UP*3+RIGHT*5.75).scale(0.5)
             kjssclogo=ImageMobject("Pictures/kjssclogo.png").move_to(UP*3.2+LEFT*4).scale(0.75)
             logo=ImageMobject("Pictures/mathletics.png").move_to(UP*1).scale(0.75)
@@ -38,27 +39,12 @@ class Example(ThreeDScene, Scene):
                 FadeOut(logo),
                 run_time=1
             )
-            # title00=Text("One of the greatest")
-            # title0d0.move_to(UP*2)
-            # title00.scale(2)
-            # title01=Text("discovery of")
-            # title01.move_to(DOWN*)
-            # title01.scale(2)
-            # title02=Text("all time")
-            # title02.scale(2)
-            # title02.move_to(DOWN*2)
+            # Intro ends
             title03=MarkupText("Cartesian" + " Plane", gradient=(RED, BLUE), font="Marcellus")
-            # title03.move_to(DOWN*1)
             title03.scale(2)
             
-            # self.play(Write(title00), run_time=0.5)
-            # self.play(Write(title01), run_time=0.5)
             self.play(Write(title03), run_time=1)
             self.wait(1)
-            # self.play(ReplacementTransform(title00, title03),
-            #           ReplacementTransform(title01, title03),
-            #           ReplacementTransform(title02, title03))
-            # self.wait(1.5)
 
             axes = Axes(
                 x_range=[-4, 4, 1],
