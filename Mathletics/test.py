@@ -1,6 +1,6 @@
 from manim import *
 import numpy as np
-config.background_color="BLACK"
+config.background_color="WHITE"
 # print(np.linspace(-3, 1, 1))
 class TestIntro(Scene):
     def construct(self):
