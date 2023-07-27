@@ -38,7 +38,6 @@ class TestIntro(Scene):
             )   
 
 
-
 class Test3D(ThreeDScene):
     def construct(self):
         axes1=ThreeDAxes(
@@ -68,13 +67,12 @@ class Test3D(ThreeDScene):
         self.wait(5)
 
 
-
 class TestAnimate(Scene):
     def construct(self):
         circle1 = Circle().move_to(LEFT)  # create a circle
         square1 = Square().move_to(LEFT)
         circle2 = Circle().move_to(RIGHT)
-        circle3 = Circle().move_to(RIGHT).set_fill(PINK, opacity=0.5)
+        circle3 = Circle().move_to(RIGHT).set_fill(PINK, opacity=0.8)
         square2 = Square().move_to(RIGHT)  # create a square
         square3 = Square().move_to(RIGHT).rotate(PI/4)
         self.play(Create(square1), Create(square2))  # show the shapes on screen
@@ -87,6 +85,25 @@ class TestAnimate(Scene):
             ReplacementTransform(square3, circle2)
         )  # transform the square into a circle
         self.play(
-            circle1.animate.set_fill(PINK, opacity=0.5),
+            circle1.animate.set_fill(PINK, opacity=0.8),
             ReplacementTransform(circle2, circle3)
         )  # color the circle on screen
+
+
+class TestSVG(Scene):
+    def construct(self):
+        svg0=SVGMobject("Pictures/kjssclogo.svg", color="#b7202e", stroke_width=0.5)
+        svg0.init_colors()
+        self.play(Create(svg0), run_time=5)
+
+class TestText(Scene):
+    config.background_color="BLACK"
+    def construct(self):
+        numbers=Text("0123456789").move_to(DOWN*0.5).scale(1.2)
+        text=Tex("Hello", color="#b7202e", font="Marcellus").move_to(UP*1).scale(1.5)
+        self.wait(2)
+        for i in range(len(text)):
+            # self.add(numbers, text)
+            self.play(ReplacementTransform(numbers[i], text[i]), run_time=0.3)
+        self.wait(3)
+

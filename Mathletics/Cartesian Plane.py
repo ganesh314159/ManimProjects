@@ -174,7 +174,7 @@ class Example(ThreeDScene, Scene):
 
             line3=axes.get_vertical_line(axes.input_to_graph_point(2, graph2), color=YELLOW, stroke_width=3)
             line4=axes.get_vertical_line(axes.input_to_graph_point(3, graph2), color=YELLOW)
-            area1=axes.get_area(graph2, x_range=[2,3], color=ORANGE, opacity=0.5)
+            area1=axes.get_area(graph2, x_range=[2,3], color=ORANGE, opacity=0.8)
             line3_label=MathTex("a", color=BLACK).next_to(line3, LEFT*0.3).scale(0.85)
             line4_label=MathTex("b", color=BLACK).next_to(line4, RIGHT*0.3).scale(0.85)
 

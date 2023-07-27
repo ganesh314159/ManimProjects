@@ -1,7 +1,7 @@
 
 # %%manim -qm -v WARNING Mathletics
 from manim import *
-from manim.mobject import number_line
+# from manim.mobject import number_line
 import numpy as np
 # config.media_width="100%"
 config.background_color="WHITE"
@@ -296,9 +296,212 @@ class Irrational(Scene):
                 run_time=1
             )
             # Intro ends
-            title=MarkupText("Irrational numbers", gradient=(RED, BLUE), font="Marcellus").scale(3)
+            title1=MarkupText("Irrational numbers", gradient=(RED, BLUE), font="Marcellus").scale(2)
+            title2=MarkupText("Irrational numbers", gradient=(RED, BLUE), font="Marcellus").scale(1)
+            title2.move_to(UP*3.5)
+            self.play(Write(title1), run_time=1)
+            self.wait(0.5)
+            self.play(ReplacementTransform(title1, title2))
+            self.wait(0.5)
+            text00=Text("Let's revise Rational numbers first.", color=BLACK, font="Fira Sans").scale(0.8)
+            text01=Text("Rational numbers :", color=BLACK, font="Fira Sans").move_to(UP*2+LEFT*3)
+            tex00=Tex("Any number of form $\\frac{p}{q}$, Where $p,q \in \mathbb{Z}$ and $q \\neq 0$", color=BLACK).move_to(UP*1+LEFT*0.5)
+            self.play(Write(text00))
+            self.play(ReplacementTransform(text00, text01))
+            self.play(Write(tex00))
+            tex01=Tex("For example ","$a$","$ = $","0.5","$ = $","$\\frac{1}{2}$","$b$","$ = $","$\\frac{3}{2}$, ","$c$","$ = $","$\\frac{2}{1}$", color=BLACK).move_to(LEFT*2.8)
+            self.play(Write(tex01))
 
+            numbar1=NumberLine(
+                x_range=[0, 4, 1],
+                length=12,
+                color=BLACK,
+                include_numbers=True,
+                label_direction=UP,
+            ).move_to(DOWN*2.75).set_color(BLACK)
+            self.play(Create(numbar1))
 
+            dota=Dot(point=numbar1.n2p(0.5), color=BLACK)
+            dotalabel=Tex("$\\frac{1}{2}$", color=BLACK).next_to(dota, DOWN, buff=0.2)
+            dotb=Dot(point=numbar1.n2p(1.5), color=BLACK)
+            dotblabel=Tex("$\\frac{3}{2}$", color=BLACK).next_to(dotb, DOWN, buff=0.2)
+            dotc=Dot(point=numbar1.n2p(2), color=BLACK)
+            dotclabel=Tex("$\\frac{2}{1}$", color=BLACK).next_to(dotc, DOWN, buff=0.2)
+
+            self.play(
+                DrawBorderThenFill(dota),
+                DrawBorderThenFill(dotb),
+                DrawBorderThenFill(dotc),
+                ReplacementTransform(tex01[3].copy(), dotalabel),
+                ReplacementTransform(tex01[6].copy(), dotblabel),
+                ReplacementTransform(tex01[9].copy(), dotclabel),
+                run_time=1
+            )
+            self.wait(2)
+            groupt1=VGroup(text01, tex00, tex01, dotalabel, dotblabel, dotclabel)
+            groupd=VGroup(dota, dotc, dotb, numbar1)
+            text20=Text("Irrational numbers :", color=BLACK, font="Fira Sans").move_to(UP*2+LEFT*3)
+            self.play(ReplacementTransform(groupt1, text20), Uncreate(groupd), run_time=1)
+            tex20=Tex("Number which can't be written in form of ","$\\frac{p}{q}$", color=BLACK).move_to(UP*1+LEFT*1.2)
+            self.play(Write(tex20), run_time=1)
+            tex21=Tex("For example ","$\pi$",",","$e$",",","$\\varphi$", color=BLACK).move_to(LEFT*4)
+            self.play(Write(tex21), run_time=1)
+            text30=Text("There are 2 types of Irrational numbers", color=BLACK, font="Fira Sans").move_to(DOWN)
+            self.play(Write(text30), run_time=0.75)
+            tex30=Tex("1. ","Algebraic", color=BLACK).move_to(DOWN*2+LEFT*4.5)
+            self.play(Write(tex30), run_time=1)
+            tex31=Tex("2. ","Transcedental", color=BLACK).move_to(DOWN*3+LEFT*4)
+            self.play(Write(tex31), run_time=1)
+            self.wait(2)
+            tex40=Tex("Algebraic", color=BLACK).move_to(UP*2.5+LEFT*3)
+            tex41=Tex("Transcedental", color=BLACK).move_to(UP*2.5+RIGHT*3)
+            groupt2=VGroup(text20, tex20, tex21, text30, tex30[0], tex31[0])
+            self.play(
+                Unwrite(groupt2),
+                ReplacementTransform(tex30[1], tex40),
+                ReplacementTransform(tex31[1], tex41),
+                run_time=1
+            )
+            self.wait(0.5)
+            self.play(Indicate(tex40, color="#b7202e"))
+            text40=Text('''Algebraic numbers are root of non-zero polynomial\n
+in one variable with Rational coefficients.''', color=BLACK, font="Fira Sans").scale(0.8).move_to(UP*1)
+            self.play(Write(text40), run_time=2)
+            tex40=Tex("For example $\\varphi = \\frac{1+\sqrt{5}}{2}$", color=BLACK).move_to(DOWN).scale(1.2)
+            text41=Text("It is also called as golden ratio", color=BLACK, font="Fira Sans").move_to(DOWN*2.5).scale(0.8)
+            self.play(Write(tex40), run_time=1)
+            self.play(Write(text41), run_time=1)
+            self.wait(1)
+            group3=VGroup(text40, tex40, text41)
+            self.play(Unwrite(group3))
+            self.wait(1)
+            self.play(Indicate(tex41, color="#b7202e"))
+            text50=Text('''Transcedental number is number that is not algebraic''', color=BLACK, font="Fira Sans").scale(0.8).move_to(UP*1.5)
+            self.play(Write(text50), run_time=1)
+            self.wait(1)
+            tex50=Tex("For example ","$\pi$"," and ","$e$", color=BLACK).scale(1.2)
+            self.play(Write(tex50), run_time=0.75)
+            tex51=Tex("$\pi = \\frac{Circumference}{Diameter} = 3.14159...$", color=BLACK).scale(1.2).move_to(DOWN*1.2)
+        
+            tex52=Tex('''$e = \sum_{n=0}^{\infty} \\frac{1}{n!} = 2.71828...$''', color=BLACK).scale(1.2).move_to(DOWN*2.5)
+            self.play(
+                ReplacementTransform(tex50.copy()[1], tex51),
+                ReplacementTransform(tex50.copy()[3], tex52),
+                run_time=2
+            )
+            self.wait(2)
+            group4=VGroup(title2, text50, tex50, tex51, tex52)
+            self.play(Unwrite(group4), run_time=1)
+
+class Complex(Scene):
+    def construct(self):
+        with register_font("assets/fonts/"):
+            # Intro starts
+            trustlogo=ImageMobject("Pictures/Trust.png").move_to(UP*3+RIGHT*5.75).scale(0.5)
+            kjssclogo=ImageMobject("Pictures/kjssclogo.png").move_to(UP*3.2+LEFT*4).scale(0.75)
+            logo=ImageMobject("Pictures/mathletics.png").move_to(UP*1).scale(0.75)
+            a = Text("Mathletics", color="#b7202e", font="Marcellus").move_to(DOWN*1).scale(2)
+            b = Text("Presents You", color="#545454", font="Marcellus").move_to(DOWN*2)
+            rec1=Rectangle(height=3, width=0.6, color="#b7202e", fill_color="#b7202e", fill_opacity=1).move_to(DOWN*2+RIGHT*6.7975)
+            rec2=Rectangle(height=0.45, width=11, color="#b7202e", fill_color="#b7202e", fill_opacity=1).move_to(DOWN*3.758+RIGHT*2.2)
+            rec3=Rectangle(height=0.45, width=4, color="#ed1c24", fill_color="#ed1c24", fill_opacity=1).move_to(DOWN*3.758+LEFT*5.3)
+            self.play(
+                FadeIn(kjssclogo),
+                FadeIn(trustlogo),
+                DrawBorderThenFill(rec1),
+                DrawBorderThenFill(rec2),
+                DrawBorderThenFill(rec3),
+                run_time=1
+            )
+            self.play(FadeIn(logo), run_time=1)
+            self.play(Write(a), run_time=0.5)
+            self.play(Write(b), run_time=0.5)
+            self.wait(1)
+            self.play(
+                Unwrite(a),
+                Unwrite(b),
+                Uncreate(rec1),
+                Uncreate(rec2),
+                Uncreate(rec3),
+                FadeOut(kjssclogo),
+                FadeOut(trustlogo),
+                FadeOut(logo),
+                run_time=1
+            )
+            # Intro ends
+            title1=MarkupText("Complex Numbers", gradient=(RED, BLUE), font="Marcellus").scale(2)
+            title2=MarkupText("Complex Numbers", gradient=(RED, BLUE), font="Marcellus").scale(1)
+            title2.move_to(UP*3.5)
+            self.play(Write(title1), run_time=1)
+            self.wait(0.5)
+            self.play(ReplacementTransform(title1, title2))
+            self.wait(0.5)
+            text00=Text("Complex number is number of form : ", color=BLACK, font="Fira Sans").move_to(UP*2.5+LEFT*1.5).scale(0.8)
+            self.play(FadeIn(text00, shift=UP))
+            tex00=Tex("$z=a+bi$"," , ","Where $a,b \in \mathbb{R}$, ","$i$","$ = \sqrt{-1}$", color=BLACK).move_to(text00.get_center()+DOWN*1+LEFT*0.4)
+            self.play(Write(tex00))
+            text01=Text("Complex number has Real and Imaginary parts", color=BLACK, font="Fira Sans").scale(0.8).move_to(UP*0.3+LEFT*0.2)
+            self.play(FadeIn(text01, shift=UP))
+            tex01=Tex("Re(z)","$ = $","$a$",", ","Im(z)","$ = $","$b$", color=BLACK).move_to(DOWN*0.7+LEFT*3.8)
+            self.play(Write(tex01))
+            text02=Text("Set of all complex numbers is defined as ", color=BLACK, font="Fira Sans").scale(0.8).move_to(DOWN*1.7+LEFT*0.9)
+            tex02=Tex("$\\mathbb{C}$", color=BLACK).next_to(text02, RIGHT, buff=0.2)
+            self.play(FadeIn(text02, shift=UP))
+            self.play(Write(tex02))
+            group0=VGroup(text00, text01, text02, tex00, tex01, tex02)
+            self.wait(2)
+            self.play(Unwrite(group0))
+            axesc=(
+                ComplexPlane(
+                    x_range=(-3, 3),
+                    y_range=(-3, 3),
+                    x_length=5,
+                    y_length=5,
+                    axis_config={"include_numbers": True},
+                )
+                .add_coordinates(color=BLACK)
+                .move_to(3.7 * RIGHT)
+            ).set_color(BLACK)
+            text10=Text("Visualising Complex Numbers", color=BLACK, font="Fira Sans").scale(0.8).move_to(UP*2.5+LEFT*3)
+            self.play(Create(axesc), Write(text10))
+            text11=Text("Complex Plane", color=BLACK, font="Fira Sans").scale(0.8).next_to(axesc, DOWN, buff=0.4)
+            tex10=Tex("$z_{1}$"," $ = $ ","$2$"," $ + $ ","$1$","$i$", color=BLACK).move_to(UP*1.5+LEFT*4)
+            tex11=Tex("$z_{2}$"," $ = $ ","$2$"," $ + $ ","$2$","$i$", color=BLACK).move_to(UP*0.5+LEFT*4)
+            tex12=Tex("$z_{3}$"," $ = $ ","$-2$"," $ + $ ","$1$","$i$", color=BLACK).move_to(DOWN*0.5+LEFT*3.85)
+            tex13=Tex("$z_{4}$"," $ = $ ","$1$"," $ - $ ","$1$","$i$", color=BLACK).move_to(DOWN*1.5+LEFT*4)
+            dot0=Dot(axesc.n2p(2+1j), color=RED)
+            dot0label=Tex("$z_{1}$", color=BLACK).move_to(dot0.get_center()+RIGHT*0.25+UP*0.25).scale(0.8)
+            dot1=Dot(axesc.n2p(2+2j), color=RED)
+            dot1label=Tex("$z_{2}$", color=BLACK).move_to(dot1.get_center()+RIGHT*0.25+UP*0.25).scale(0.8)
+            dot2=Dot(axesc.n2p(-2+1j), color=RED)
+            dot2label=Tex("$z_{3}$", color=BLACK).move_to(dot2.get_center()+LEFT*0.25+UP*0.25).scale(0.8)
+            dot3=Dot(axesc.n2p(1-1j), color=RED)
+            dot3label=Tex("$z_{4}$", color=BLACK).move_to(dot3.get_center()+RIGHT*0.25+DOWN*0.25).scale(0.8)
+            self.play(Write(tex10), GrowFromCenter(text11))
+            self.play(Write(tex11), ReplacementTransform(tex10[2:].copy(), dot0), ReplacementTransform(tex10[0].copy(), dot0label))
+            self.play(Write(tex12), ReplacementTransform(tex11[2:].copy(), dot1), ReplacementTransform(tex11[0].copy(), dot1label))
+            self.play(Write(tex13), ReplacementTransform(tex12[2:].copy(), dot2), ReplacementTransform(tex12[0].copy(), dot2label))
+            self.play(ReplacementTransform(tex13[2:].copy(), dot3), ReplacementTransform(tex13[0].copy(), dot3label))
+            self.wait(2)
+            axesc1=(
+                ComplexPlane(
+                    x_range=(-1.5, 1.5),
+                    y_range=(-1.5, 1.5),
+                    x_length=5,
+                    y_length=5,
+                    axis_config={"include_numbers": True},
+                )
+                .add_coordinates(color=BLACK)
+                .move_to(3.7 * RIGHT)
+            ).set_color(BLACK)
+            labels=VGroup(dot0label, dot1label, dot2label, dot3label, tex10, tex11, tex12, tex13)
+            dots=VGroup(dot0, dot1, dot2, dot3)
+            self.play(Unwrite(labels), Uncreate(dots), ReplacementTransform(axesc, axesc1))
+            self.wait(1)
+            tex20=Tex("$z$"," $ = $ ","$1$"," $ + $ ","$0$","$i$"," $ = $ ","1", color=BLACK).move_to(UP*1.5+LEFT*4)
+            dot20=Dot(axesc1.n2p(1+0j), color=RED)
+            dot20label=Tex("$z$", color=BLACK).move_to(dot20.get_center()+UP*0.25+RIGHT*0.25)
+            self.add(tex20, dot20, dot20label)
 
 
 

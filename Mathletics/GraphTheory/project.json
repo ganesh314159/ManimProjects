@@ -1,0 +1,23 @@
+[
+    {
+        "sections_len": 1,
+        "sections": [
+            {
+                "id": 0,
+                "name": "autocreated",
+                "type": "normal",
+                "is_sub_section": false,
+                "original_video": "/home/ganesh314159/ManimCE/ManimProjects/Mathletics/media/videos/graphtheory/720p30/sections/Dots_0000.mp4",
+                "width": 1280,
+                "height": 720,
+                "fps": "30",
+                "duration": 7.0,
+                "project_name": "GraphTheory",
+                "in_project_video": "video_0000.mp4",
+                "in_project_thumbnail": "thumb_0000.jpg",
+                "in_project_id": 0,
+                "parent_id": 0
+            }
+        ]
+    }
+]
